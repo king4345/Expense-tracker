@@ -37,7 +37,7 @@ function displayExpenses(data) {
 
         li.innerHTML = `
             ${e.desc} - ₹${e.amount} (${e.category})
-            <button onclick="deleteExpense(${index})">Delete</button>
+            <button onclick="deleteExpense(${index})">❌ Delete</button>
         `;
 
         list.appendChild(li);
