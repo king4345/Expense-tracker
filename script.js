@@ -37,7 +37,7 @@ function displayExpenses(data) {
 
         li.innerHTML = `
             ${e.desc} - ₹${e.amount} (${e.category})
-            <button onclick="deleteExpense(${index})">Delete</button>
+            <button onclick="deleteExpense(${index})">❌ Delete</button>
         `;
 
         list.appendChild(li);
@@ -54,9 +54,17 @@ function deleteExpense(index) {
 function filterExpenses() {
     let category = document.getElementById("filter").value;
 
-    let filtered = expenses.filter(e => e.category === category);
+   let filtered = expenses.filter(e =>
+    e.category.toLowerCase() === category.toLowerCase()
+);
 
-    displayExpenses(filtered);
+    displayExpenses(filtered);{
+        if (data.length === 0) {
+    list.innerHTML = "<p>No expenses found</p>";
+    document.getElementById("total").innerText = 0;
+    return;
+}
+    }
 }
 
 function clearAll() {
