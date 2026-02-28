@@ -5,10 +5,10 @@ function addExpense() {
     let amount = document.getElementById("amount").value;
     let category = document.getElementById("category").value;
 
-    if (desc === "" || amount === "") {
-        alert("Enter all details");
-        return;
-    }
+    if (desc.trim() === "" || amount <= 0) {
+    alert("Please enter valid description and amount");
+    return;
+}
 
     let expense = {
         desc: desc,
