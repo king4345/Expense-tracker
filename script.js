@@ -19,6 +19,9 @@ function addExpense() {
     expenses.push(expense);
 
     displayExpenses(expenses);
+    document.getElementById("desc").value = "";
+document.getElementById("amount").value = "";
+document.getElementById("category").value = "";
 }
 
 function displayExpenses(data) {
