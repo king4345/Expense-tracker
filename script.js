@@ -54,7 +54,9 @@ function deleteExpense(index) {
 function filterExpenses() {
     let category = document.getElementById("filter").value;
 
-    let filtered = expenses.filter(e => e.category === category);
+   let filtered = expenses.filter(e =>
+    e.category.toLowerCase() === category.toLowerCase()
+);
 
     displayExpenses(filtered);
 }
