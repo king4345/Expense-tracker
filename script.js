@@ -1,6 +1,6 @@
 let expenses = [];
 
-// Load data when page starts
+// Load on start
 document.addEventListener("DOMContentLoaded", () => {
     loadExpenses();
     displayExpenses(expenses);
@@ -31,10 +31,87 @@ function addExpense() {
 
     expenses.push(expense);
     saveExpenses();
-
     displayExpenses(expenses);
-    resetForm();
+
+    // reset
+    document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
 }
+
+// Display
+function displayExpenses(data) {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    if (data.length === 0) {
+        list.innerHTML = "<p>No expenses found</p>";
+        document.getElementById("total").innerText = 0;
+        return;
+    }
+
+    let total = 0;
+
+    data.forEach(exp => {
+        total += exp.amount;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${exp.desc} - ₹${exp.amount} (${exp.category})
+        `;
+
+        const btn = document.createElement("button");
+        btn.textContent = "❌";
+        btn.onclick = () => deleteExpense(exp.id);
+
+        li.appendChild(btn);
+        list.appendChild(li);
+    });
+
+    document.getElementById("total").innerText = total;
+}
+
+// Delete
+function deleteExpense(id) {
+    expenses = expenses.filter(e => e.id !== id);
+    saveExpenses();
+    displayExpenses(expenses);
+}
+
+// Filter
+function filterExpenses() {
+    const category = document.getElementById("filter").value;
+
+    if (category === "All") {
+        displayExpenses(expenses);
+        return;
+    }
+
+    const filtered = expenses.filter(e => e.category === category);
+    displayExpenses(filtered);
+}
+
+// Clear
+function clearAll() {
+    if (!confirm("Delete all expenses?")) return;
+
+    expenses = [];
+    saveExpenses();
+    displayExpenses(expenses);
+}
+
+// Save
+function saveExpenses() {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+// Load
+function loadExpenses() {
+    const data = localStorage.getItem("expenses");
+    if (data) {
+        expenses = JSON.parse(data);
+    }
+}}
 
 // Display expenses
 function displayExpenses(data) {
