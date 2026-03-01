@@ -1,13 +1,13 @@
 let expenses = [];
 
-// Setup
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("addBtn").addEventListener("click", addExpense);
     document.getElementById("filter").addEventListener("change", filterExpenses);
     document.getElementById("clearBtn").addEventListener("click", clearAll);
+
+    displayExpenses(expenses);
 });
 
-// Add expense
 function addExpense() {
     const desc = document.getElementById("desc").value.trim();
     const amount = Number(document.getElementById("amount").value);
@@ -18,17 +18,14 @@ function addExpense() {
         return;
     }
 
-    const expense = { desc, amount, category };
-    expenses.push(expense);
+    expenses.push({ desc, amount, category });
 
     displayExpenses(expenses);
 
-    // Clear inputs
     document.getElementById("desc").value = "";
     document.getElementById("amount").value = "";
 }
 
-// Display
 function displayExpenses(data) {
     const list = document.getElementById("list");
     list.innerHTML = "";
@@ -37,52 +34,6 @@ function displayExpenses(data) {
 
     if (data.length === 0) {
         list.innerHTML = "<p>No expenses found</p>";
-        document.getElementById("total").innerText = 0;
-        return;
-    }
-
-    data.forEach((exp, index) => {
-        total += exp.amount;
-
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            ${exp.desc} - ₹${exp.amount} (${exp.category})
-            <button onclick="deleteExpense(${index})">❌</button>
-        `;
-
-        list.appendChild(li);
-    });
-
-    document.getElementById("total").innerText = total;
-}
-
-// Delete
-function deleteExpense(index) {
-    expenses.splice(index, 1);
-    displayExpenses(expenses);
-}
-
-// Filter
-function filterExpenses() {
-    const category = document.getElementById("filter").value;
-
-    if (category === "All") {
-        displayExpenses(expenses);
-        return;
-    }
-
-    const filtered = expenses.filter(exp => exp.category === category);
-    displayExpenses(filtered);
-}
-
-// Clear all
-function clearAll() {
-    if (!confirm("Delete all expenses?")) return;
-
-    expenses = [];
-    displayExpenses(expenses);
-}        list.innerHTML = "<p>No expenses found</p>";
         document.getElementById("total").innerText = 0;
         return;
     }
@@ -113,11 +64,10 @@ function filterExpenses() {
 
     if (category === "All") {
         displayExpenses(expenses);
-        return;
+    } else {
+        const filtered = expenses.filter(e => e.category === category);
+        displayExpenses(filtered);
     }
-
-    const filtered = expenses.filter(e => e.category === category);
-    displayExpenses(filtered);
 }
 
 function clearAll() {
@@ -125,216 +75,4 @@ function clearAll() {
 
     expenses = [];
     displayExpenses(expenses);
-}// Display list
-function displayExpenses(data) {
-    let list = document.getElementById("list");
-    list.innerHTML = "";
-
-    let total = 0;
-
-    if (data.length === 0) {
-        list.innerHTML = "<p>No expenses found</p>";
-        document.getElementById("total").innerText = 0;
-        return;
-    }
-
-    data.forEach((exp, index) => {
-        total += exp.amount;
-
-        let li = document.createElement("li");
-
-        li.innerHTML = `
-            ${exp.desc} - ₹${exp.amount} (${exp.category})
-            <button onclick="deleteExpense(${index})">❌</button>
-        `;
-
-        list.appendChild(li);
-    });
-
-    document.getElementById("total").innerText = total;
-}
-
-// Delete
-function deleteExpense(index) {
-    expenses.splice(index, 1);
-    displayExpenses(expenses);
-}
-
-// Filter
-function filterExpenses() {
-    let category = document.getElementById("filter").value;
-
-    if (category === "All") {
-        displayExpenses(expenses);
-        return;
-    }
-
-    let filtered = expenses.filter(e => e.category === category);
-    displayExpenses(filtered);
-}
-
-// Clear all
-function clearAll() {
-    if (!confirm("Delete all expenses?")) return;
-
-    expenses = [];
-    displayExpenses(expenses);
-}    document.getElementById("desc").value = "";
-    document.getElementById("amount").value = "";
-}
-
-// Display
-function displayExpenses(data) {
-    const list = document.getElementById("list");
-    list.innerHTML = "";
-
-    if (data.length === 0) {
-        list.innerHTML = "<p>No expenses found</p>";
-        document.getElementById("total").innerText = 0;
-        return;
-    }
-
-    let total = 0;
-
-    data.forEach(exp => {
-        total += exp.amount;
-
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            ${exp.desc} - ₹${exp.amount} (${exp.category})
-        `;
-
-        const btn = document.createElement("button");
-        btn.textContent = "❌";
-        btn.onclick = () => deleteExpense(exp.id);
-
-        li.appendChild(btn);
-        list.appendChild(li);
-    });
-
-    document.getElementById("total").innerText = total;
-}
-
-// Delete
-function deleteExpense(id) {
-    expenses = expenses.filter(e => e.id !== id);
-    saveExpenses();
-    displayExpenses(expenses);
-}
-
-// Filter
-function filterExpenses() {
-    const category = document.getElementById("filter").value;
-
-    if (category === "All") {
-        displayExpenses(expenses);
-        return;
-    }
-
-    const filtered = expenses.filter(e => e.category === category);
-    displayExpenses(filtered);
-}
-
-// Clear
-function clearAll() {
-    if (!confirm("Delete all expenses?")) return;
-
-    expenses = [];
-    saveExpenses();
-    displayExpenses(expenses);
-}
-
-// Save
-function saveExpenses() {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-}
-
-// Load
-function loadExpenses() {
-    const data = localStorage.getItem("expenses");
-    if (data) {
-        expenses = JSON.parse(data);
-    }
-}}
-
-// Display expenses
-function displayExpenses(data) {
-    const list = document.getElementById("list");
-    list.innerHTML = "";
-
-    if (data.length === 0) {
-        list.innerHTML = "<p>No expenses found</p>";
-        document.getElementById("total").innerText = 0;
-        return;
-    }
-
-    let total = 0;
-
-    data.forEach(exp => {
-        total += exp.amount;
-
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            ${exp.desc} - ₹${exp.amount} (${exp.category})
-        `;
-
-        const btn = document.createElement("button");
-        btn.textContent = "❌";
-        btn.addEventListener("click", () => deleteExpense(exp.id));
-
-        li.appendChild(btn);
-        list.appendChild(li);
-    });
-
-    document.getElementById("total").innerText = total;
-}
-
-// Delete expense
-function deleteExpense(id) {
-    expenses = expenses.filter(exp => exp.id !== id);
-    saveExpenses();
-    displayExpenses(expenses);
-}
-
-// Filter
-function filterExpenses() {
-    const category = document.getElementById("filter").value;
-
-    if (category === "All") {
-        displayExpenses(expenses);
-        return;
-    }
-
-    const filtered = expenses.filter(exp => exp.category === category);
-    displayExpenses(filtered);
-}
-
-// Clear all
-function clearAll() {
-    if (!confirm("Delete all expenses?")) return;
-
-    expenses = [];
-    saveExpenses();
-    displayExpenses(expenses);
-}
-
-// Reset form
-function resetForm() {
-    document.getElementById("desc").value = "";
-    document.getElementById("amount").value = "";
-    document.getElementById("category").selectedIndex = 0;
-}
-
-// Local storage
-function saveExpenses() {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-}
-
-function loadExpenses() {
-    const data = localStorage.getItem("expenses");
-    if (data) {
-        expenses = JSON.parse(data);
-    }
 }
