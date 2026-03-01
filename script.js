@@ -1,3 +1,4 @@
+console.log("JS WORKING");
 let expenses = [];
 
 // Run after page loads
