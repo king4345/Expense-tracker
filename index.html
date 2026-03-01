@@ -2,59 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
-    <style>
-        body {
-            font-family: Arial;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
 
-        input, select, button {
-            margin: 5px;
-            padding: 8px;
-        }
-
-        li {
-            margin: 10px 0;
-        }
-
-        button {
-            cursor: pointer;
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Expense Tracker</h2>
+<div class="container">
 
-<input id="desc" placeholder="Description">
-<input id="amount" type="number" placeholder="Amount">
+    <h2>Expense Tracker</h2>
 
-<select id="category">
-    <option value="Food">Food</option>
-    <option value="Travel">Travel</option>
-    <option value="Shopping">Shopping</option>
-</select>
+    <!-- Input Section -->
+    <input id="desc" type="text" placeholder="Enter description">
+    <input id="amount" type="number" placeholder="Enter amount">
 
-<button id="addBtn">Add Expense</button>
+    <select id="category">
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Shopping">Shopping</option>
+    </select>
 
-<br><br>
+    <button id="addBtn">Add Expense</button>
 
-<select id="filter">
-    <option value="All">All</option>
-    <option value="Food">Food</option>
-    <option value="Travel">Travel</option>
-    <option value="Shopping">Shopping</option>
-</select>
+    <!-- Filter Section -->
+    <select id="filter">
+        <option value="All">All</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Shopping">Shopping</option>
+    </select>
 
-<button id="clearBtn">Clear All</button>
+    <button id="clearBtn">Clear All</button>
 
-<h3>Total: ₹<span id="total">0</span></h3>
+    <!-- Total -->
+    <h3>Total: ₹<span id="total">0</span></h3>
 
-<ul id="list"></ul>
+    <!-- Expense List -->
+    <ul id="list"></ul>
 
+</div>
+
+<!-- JS -->
 <script src="script.js"></script>
 
 </body>
