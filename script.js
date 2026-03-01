@@ -1,40 +1,93 @@
 let expenses = [];
 
-// Load on start
+// Run after page loads
 document.addEventListener("DOMContentLoaded", () => {
-    loadExpenses();
-    displayExpenses(expenses);
+    document.getElementById("addBtn").addEventListener("click", addExpense);
+    document.getElementById("filter").addEventListener("change", filterExpenses);
+    document.getElementById("clearBtn").addEventListener("click", clearAll);
 });
-
-// Event listeners
-document.getElementById("addBtn").addEventListener("click", addExpense);
-document.getElementById("filter").addEventListener("change", filterExpenses);
-document.getElementById("clearBtn").addEventListener("click", clearAll);
 
 // Add expense
 function addExpense() {
-    const desc = document.getElementById("desc").value.trim();
-    const amount = Number(document.getElementById("amount").value);
-    const category = document.getElementById("category").value;
+    let desc = document.getElementById("desc").value.trim();
+    let amount = Number(document.getElementById("amount").value);
+    let category = document.getElementById("category").value;
 
-    if (!desc || isNaN(amount) || amount <= 0) {
+    if (desc === "" || isNaN(amount) || amount <= 0) {
         alert("Enter valid data");
         return;
     }
 
-    const expense = {
-        id: Date.now(),
-        desc,
-        amount,
-        category
+    let expense = {
+        desc: desc,
+        amount: amount,
+        category: category
     };
 
     expenses.push(expense);
-    saveExpenses();
+
     displayExpenses(expenses);
 
-    // reset
+    // Clear input fields
     document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
+}
+
+// Display list
+function displayExpenses(data) {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+
+    let total = 0;
+
+    if (data.length === 0) {
+        list.innerHTML = "<p>No expenses found</p>";
+        document.getElementById("total").innerText = 0;
+        return;
+    }
+
+    data.forEach((exp, index) => {
+        total += exp.amount;
+
+        let li = document.createElement("li");
+
+        li.innerHTML = `
+            ${exp.desc} - ₹${exp.amount} (${exp.category})
+            <button onclick="deleteExpense(${index})">❌</button>
+        `;
+
+        list.appendChild(li);
+    });
+
+    document.getElementById("total").innerText = total;
+}
+
+// Delete
+function deleteExpense(index) {
+    expenses.splice(index, 1);
+    displayExpenses(expenses);
+}
+
+// Filter
+function filterExpenses() {
+    let category = document.getElementById("filter").value;
+
+    if (category === "All") {
+        displayExpenses(expenses);
+        return;
+    }
+
+    let filtered = expenses.filter(e => e.category === category);
+    displayExpenses(filtered);
+}
+
+// Clear all
+function clearAll() {
+    if (!confirm("Delete all expenses?")) return;
+
+    expenses = [];
+    displayExpenses(expenses);
+}    document.getElementById("desc").value = "";
     document.getElementById("amount").value = "";
 }
 
