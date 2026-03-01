@@ -1,13 +1,13 @@
 let expenses = [];
 
+// Setup
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("addBtn").addEventListener("click", addExpense);
     document.getElementById("filter").addEventListener("change", filterExpenses);
     document.getElementById("clearBtn").addEventListener("click", clearAll);
-
-    displayExpenses(expenses);
 });
 
+// Add expense
 function addExpense() {
     const desc = document.getElementById("desc").value.trim();
     const amount = Number(document.getElementById("amount").value);
@@ -23,10 +23,12 @@ function addExpense() {
 
     displayExpenses(expenses);
 
+    // Clear inputs
     document.getElementById("desc").value = "";
     document.getElementById("amount").value = "";
 }
 
+// Display
 function displayExpenses(data) {
     const list = document.getElementById("list");
     list.innerHTML = "";
@@ -35,6 +37,52 @@ function displayExpenses(data) {
 
     if (data.length === 0) {
         list.innerHTML = "<p>No expenses found</p>";
+        document.getElementById("total").innerText = 0;
+        return;
+    }
+
+    data.forEach((exp, index) => {
+        total += exp.amount;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${exp.desc} - ₹${exp.amount} (${exp.category})
+            <button onclick="deleteExpense(${index})">❌</button>
+        `;
+
+        list.appendChild(li);
+    });
+
+    document.getElementById("total").innerText = total;
+}
+
+// Delete
+function deleteExpense(index) {
+    expenses.splice(index, 1);
+    displayExpenses(expenses);
+}
+
+// Filter
+function filterExpenses() {
+    const category = document.getElementById("filter").value;
+
+    if (category === "All") {
+        displayExpenses(expenses);
+        return;
+    }
+
+    const filtered = expenses.filter(exp => exp.category === category);
+    displayExpenses(filtered);
+}
+
+// Clear all
+function clearAll() {
+    if (!confirm("Delete all expenses?")) return;
+
+    expenses = [];
+    displayExpenses(expenses);
+}        list.innerHTML = "<p>No expenses found</p>";
         document.getElementById("total").innerText = 0;
         return;
     }
