@@ -2,32 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+        input, select, button {
+            margin: 5px;
+            padding: 8px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+<h2>Expense Tracker</h2>
 
-    <h2>Expense Tracker</h2>
+<input id="desc" placeholder="Description">
+<input id="amount" type="number" placeholder="Amount">
 
-    <!-- Input Section -->
-    <input id="desc" type="text" placeholder="Enter description">
-    <input id="amount" type="number" placeholder="Enter amount">
+<select id="category">
+    <option value="Food">Food</option>
+    <option value="Travel">Travel</option>
+    <option value="Shopping">Shopping</option>
+</select>
 
-    <select id="category">
-        <option value="Food">Food</option>
-        <option value="Travel">Travel</option>
-        <option value="Shopping">Shopping</option>
-    </select>
+<button id="addBtn">Add Expense</button>
 
-    <button id="addBtn">Add Expense</button>
-
-    <!-- Filter Section -->
-   <p class="label">Filter Expenses by Category</p>
+<br><br>
 
 <select id="filter">
     <option value="All">All</option>
@@ -36,16 +49,16 @@
     <option value="Shopping">Shopping</option>
 </select>
 
-    <button id="clearBtn">Clear All</button>
+<button id="clearBtn">Clear All</button>
 
-    <!-- Total -->
-    <h3>Total: ₹<span id="total">0</span></h3>
+<h3>Total: ₹<span id="total">0</span></h3>
 
-    <!-- Expense List -->
-    <ul id="list"></ul>
+<ul id="list"></ul>
 
-</div>
+<script src="script.js"></script>
 
+</body>
+</html>
 <!-- JS -->
 <script src="script.js"></script>
 
