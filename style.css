@@ -5,48 +5,40 @@
     box-sizing: border-box;
 }
 
-/* Page background */
+/* Body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff9db; /* light yellow */
-    text-align: center;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding: 40px;
 }
 
-/* Main container (expense box) */
+/* Main container */
 .container {
-    max-width: 600px;
-    margin: auto;
+    width: 100%;
+    max-width: 500px;
+    background: white;
     padding: 25px;
-
-    background-color: #f0f0f0; /* light grey box */
-    border-radius: 15px;
-
-    /* outline */
-    border: 2px solid #ccc;
-
-    /* soft shadow */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* Title */
 h2 {
-    font-weight: bold;
-    font-style: italic;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Inputs, dropdowns, buttons */
-input, select, button {
+/* Inputs & Select */
+input, select {
     width: 100%;
-    margin: 10px 0;
     padding: 10px;
-
+    margin: 8px 0;
     border-radius: 6px;
     border: 1px solid #ccc;
     outline: none;
-
-    font-size: 16px;
 }
 
 /* Focus effect */
@@ -56,23 +48,32 @@ input:focus, select:focus {
 
 /* Buttons */
 button {
-    background-color: #1e73d8;
-    color: white;
+    padding: 10px;
+    margin-top: 10px;
     border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
     cursor: pointer;
+    width: 100%;
     transition: 0.2s;
 }
 
-/* Hover effect */
+/* Button hover */
 button:hover {
-    background-color: #155ab6;
+    background: #0056b3;
 }
 
-/* Filter label */
-.label {
-    text-align: left;
-    font-weight: bold;
-    margin-top: 10px;
+/* Delete button */
+li button {
+    background: #e74c3c;
+    margin-left: 10px;
+    padding: 5px 8px;
+    width: auto;
+}
+
+li button:hover {
+    background: #c0392b;
 }
 
 /* Expense list */
@@ -86,30 +87,15 @@ li {
     list-style: none;
     margin: 10px 0;
     padding: 10px;
-
-    border: 1px solid #ccc;
     border-radius: 6px;
-
+    background: #f0f2f5;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    background-color: #ffffff;
-}
-
-/* Delete button inside list */
-li button {
-    background-color: #e74c3c;
-    padding: 5px 10px;
-    width: auto;
-}
-
-li button:hover {
-    background-color: #c0392b;
 }
 
 /* Total */
 h3 {
     margin-top: 20px;
-    font-weight: bold;
+    text-align: center;
 }
