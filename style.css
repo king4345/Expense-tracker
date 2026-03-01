@@ -8,7 +8,7 @@
 /* Page */
 body {
     font-family: Arial, sans-serif;
-    background-color: light yellow; /* light yellow */
+    background: linear-gradient(135deg, #fff9db, #ffeaa7);
 
     display: flex;
     justify-content: center;
