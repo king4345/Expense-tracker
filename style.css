@@ -8,7 +8,7 @@
 /* Page */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff9db; /* light yellow */
+    background-color: light yellow; /* light yellow */
 
     display: flex;
     justify-content: center;
