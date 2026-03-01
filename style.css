@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #90caf9, #e3f2fd);
     display: flex;
     justify-content: center;
@@ -71,145 +71,14 @@ li {
 }
 
 li button {
-    background: red;
+    background: #e74c3c;
     color: white;
     padding: 5px 8px;
     border: none;
     border-radius: 4px;
     width: auto;
-}    font-style: italic;
 }
 
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-input:focus, select:focus {
-    border-color: #1e73d8;
-    outline: none;
-}
-
-button {
-    background-color: #1e73d8;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #155ab6;
-}
-
-.filter-label {
-    text-align: left;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-ul {
-    margin-top: 20px;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-    margin: 10px 0;
-    padding: 10px;
-
-    border-radius: 6px;
-    border: 1px solid #ccc;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: white;
-}
-
-li button {
-    width: auto;
-    padding: 5px 10px;
-    background: #e74c3c;
-}
-
-li button:hover {
-    background: #c0392b;
-}
-
-h3 {
-    text-align: center;
-    margin-top: 20px;
-}    margin-bottom: 20px;
-    font-weight: bold;
-    font-style: italic;
-}
-
-/* Inputs */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-/* Buttons */
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-
-    border-radius: 6px;
-    border: none;
-
-    background: #1e73d8;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #155ab6;
-}
-
-/* List */
-ul {
-    margin-top: 20px;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-    margin: 10px 0;
-    padding: 10px;
-
-    border-radius: 6px;
-    border: 1px solid #ccc;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: white;
-}
-
-/* Delete button */
-li button {
-    width: auto;
-    background: #e74c3c;
-}
-
-li button:hover {
-    background: #c0392b;
-}
-
-/* Total */
 h3 {
     text-align: center;
     margin-top: 20px;
