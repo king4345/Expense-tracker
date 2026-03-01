@@ -4,25 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
     <h2>Expense Tracker</h2>
 
-    <input id="desc" placeholder="Enter description">
+    <!-- Input fields -->
+    <input id="desc" type="text" placeholder="Enter description">
     <input id="amount" type="number" placeholder="Enter amount">
 
+    <!-- Category dropdown -->
     <select id="category">
         <option value="Food">Food</option>
         <option value="Travel">Travel</option>
         <option value="Shopping">Shopping</option>
     </select>
 
+    <!-- Add button -->
     <button id="addBtn">Add Expense</button>
-<p class="filter-label">Filter to check your Expenses:</p>
+
+    <!-- Filter label -->
+    <p class="filter-label">Filter to check your expenses:</p>
+
+    <!-- Filter dropdown -->
     <select id="filter">
         <option value="All">All</option>
         <option value="Food">Food</option>
@@ -30,11 +40,22 @@
         <option value="Shopping">Shopping</option>
     </select>
 
+    <!-- Clear button -->
     <button id="clearBtn">Clear All</button>
 
+    <!-- Total -->
     <h3>Total: ₹<span id="total">0</span></h3>
 
+    <!-- List -->
     <ul id="list"></ul>
+
+</div>
+
+<!-- JS (INSIDE body, at bottom) -->
+<script src="script.js"></script>
+
+</body>
+</html>    <ul id="list"></ul>
 
 </div>
 
