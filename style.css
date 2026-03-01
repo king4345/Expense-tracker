@@ -71,19 +71,17 @@ li {
 }
 
 li button {
-    background: #e74c3c;   /* red */
-    color: white;          /* white cross */
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 6px;
-    border: none;
+    background: black;   /* change to black */
+    color: white;        /* keeps text visible */
     padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
     width: auto;
     cursor: pointer;
 }
 
 li button:hover {
-    background: #c0392b;
+    background: #333;
 }
 
 h3 {
